@@ -4,6 +4,7 @@ class FLService {
   constructor() {
     this.nodes = new Map(); // In-memory node status for real-time
     this.currentRound = 0;
+    this.roundContributions = 0;
     this.isTraining = false;
     this.modelHash = 'init-hash-0000';
     this.accuracy = 0.75;
@@ -59,10 +60,11 @@ class FLService {
     });
 
     // Check if we have enough updates to advance round
-    // Simple logic: every 3 updates advances the round
-    const totalContributions = Array.from(this.nodes.values()).reduce((sum, n) => sum + n.contribution, 0);
+    // Simple logic: require at least 3 updates or 50% of connected nodes (min 2)
+    this.roundContributions++;
+    const requiredUpdates = Math.max(2, Math.min(3, this.nodes.size));
     
-    if (totalContributions % 3 === 0) {
+    if (this.roundContributions >= requiredUpdates) {
       this.advanceRound();
       // Broadcast with additional training metrics for visualization
       return { 
@@ -79,6 +81,7 @@ class FLService {
 
   advanceRound() {
     this.currentRound++;
+    this.roundContributions = 0;
     this.modelHash = `round-${this.currentRound}-${Math.random().toString(36).substr(2, 8)}`;
     this.accuracy = Math.min(0.995, this.accuracy + (Math.random() * 0.005));
     

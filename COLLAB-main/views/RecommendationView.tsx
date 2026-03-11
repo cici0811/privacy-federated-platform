@@ -29,7 +29,12 @@ const RecommendationView: React.FC<RecommendationViewProps> = ({ onBack }) => {
 
   const fetchRecs = async () => {
     try {
-      const token = localStorage.getItem('token') || 'mock-token';
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found');
+        setStep('input');
+        return;
+      }
       const res = await api.getRecommendations(token);
       if (res.success) {
         setRecommendations(res.recommendations);

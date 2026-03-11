@@ -82,11 +82,8 @@ class AuthService {
       console.log('Seeding admin account...');
       await this.register('admin', '123456', 'admin');
     } else {
-        // Reset password for demo purposes if it exists
-        // console.log('Admin account exists.');
-        // Force update password for testing
-        const hashedPassword = await bcrypt.hash('123456', SALT_ROUNDS);
-        await db.users.update({ username: 'admin' }, { $set: { password: hashedPassword } });
+      // Admin exists, do not reset password
+      console.log('Admin account already exists.');
     }
   }
 }

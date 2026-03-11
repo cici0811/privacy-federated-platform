@@ -34,8 +34,7 @@ class RecommendationService {
           tag: "开发工具"
         }
       ];
-      await db.recommendations.insert(defaults);
-      recs = defaults;
+      recs = await db.recommendations.insert(defaults);
     }
     
     return recs;

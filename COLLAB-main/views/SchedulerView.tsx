@@ -21,7 +21,12 @@ const SchedulerView: React.FC<SchedulerViewProps> = ({ onBack }) => {
   const handleInitiate = async () => {
     try {
       setStep(2);
-      const token = localStorage.getItem('token') || 'mock-token';
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('请先登录');
+        setStep(1);
+        return;
+      }
       const res = await api.initiateMeeting(token, {
         topic,
         duration,
@@ -44,7 +49,8 @@ const SchedulerView: React.FC<SchedulerViewProps> = ({ onBack }) => {
     if (step === 2 && meetingId) {
       interval = setInterval(async () => {
         try {
-          const token = localStorage.getItem('token') || 'mock-token';
+          const token = localStorage.getItem('token');
+          if (!token) return;
           const statusRes = await api.getMeetingStatus(token, meetingId);
           setEncryptionProgress(statusRes.progress);
           
@@ -70,7 +76,12 @@ const SchedulerView: React.FC<SchedulerViewProps> = ({ onBack }) => {
     
     setIsSending(true);
     try {
-      const token = localStorage.getItem('token') || 'mock-token';
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('请先登录');
+        setIsSending(false);
+        return;
+      }
       await api.confirmMeeting(token, {
         meetingId,
         candidateId: candidates[0].id // Default pick first

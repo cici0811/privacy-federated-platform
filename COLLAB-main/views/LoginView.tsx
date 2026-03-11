@@ -69,7 +69,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onLogin }) => {
           秘协作
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          基于隐私计算的安全联邦协作平台
+          基于隐私计算的联邦协作平台 (V1.0)
         </p>
       </div>
 
@@ -238,7 +238,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onLogin }) => {
       </div>
       
       <div className="absolute bottom-4 w-full text-center">
-        <p className="text-xs text-gray-400">© 2025 秘协作 (Secret Collab Inc.) 保留所有权利 | 隐私政策</p>
+        <p className="text-xs text-gray-400">© 2026 基于隐私计算的联邦协作平台 - 《秘协作》 保留所有权利 | 隐私政策</p>
       </div>
     </div>
   );

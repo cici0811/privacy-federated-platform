@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
   console.log(`
   ################################################
-  🛡️  Secret Collab Backend (Production Grade) 🛡️
+  🛡️  基于隐私计算的联邦协作平台 - 《秘协作》 后端 🛡️
   ################################################
   Server listening on port: ${PORT}
   Environment: ${process.env.NODE_ENV || 'development'}

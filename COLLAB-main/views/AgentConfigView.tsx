@@ -23,7 +23,8 @@ const AgentConfigView: React.FC = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const token = localStorage.getItem('token') || 'mock-token';
+        const token = localStorage.getItem('token');
+        if (!token) return;
         const res = await api.getAgentConfig(token);
         if (res.success && res.config) {
           // Map config.privacyLevel string to enum if needed
@@ -139,7 +140,7 @@ const AgentConfigView: React.FC = () => {
                </div>
                <div>
                  <h3 className="font-bold text-gray-900">Meta execuTorch (本地版)</h3>
-                 <p className="text-xs text-gray-500">v3.2.0 • 在 NPU 上运行</p>
+                 <p className="text-xs text-gray-500">V1.0 • 在 NPU 上运行</p>
                </div>
              </div>
              <div className="flex items-center space-x-2">

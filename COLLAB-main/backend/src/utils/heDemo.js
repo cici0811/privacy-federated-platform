@@ -1,4 +1,11 @@
-class CKKSDemo {
+/**
+ * MOCK HOMOMORPHIC ENCRYPTION IMPLEMENTATION
+ * 
+ * WARNING: This is a SIMULATION for demonstration purposes only.
+ * It does NOT provide real cryptographic security.
+ * In a production environment, use a WebAssembly port of SEAL (Microsoft) or OpenFHE.
+ */
+class MockCKKSDemo {
   constructor() {
     this.scale = 1000;
   }
@@ -40,4 +47,4 @@ class CKKSDemo {
   }
 }
 
-module.exports = new CKKSDemo();
+module.exports = new MockCKKSDemo();

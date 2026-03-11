@@ -72,7 +72,8 @@ const NetworkView: React.FC = () => {
   const fetchNodes = async () => {
     setIsRefreshing(true);
     try {
-      const token = localStorage.getItem('token') || 'mock-token';
+      const token = localStorage.getItem('token');
+      if (!token) return;
       const res = await api.getNodesList(token);
       if (res.success) {
         // Transform backend data to frontend model if needed

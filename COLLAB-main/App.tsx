@@ -88,7 +88,7 @@ const App: React.FC = () => {
           </div>
           <div>
             <h1 className="font-bold text-gray-900 tracking-tight text-lg leading-tight">秘协作</h1>
-            <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Secret Collab</p>
+            <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">基于隐私计算的联邦协作平台</p>
           </div>
         </div>
 

@@ -44,7 +44,12 @@ const TravelView: React.FC<TravelViewProps> = ({ onBack }) => {
     
     try {
       // Initiate search
-      const token = localStorage.getItem('token') || 'mock-token';
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('请先登录');
+        setStep('input');
+        return;
+      }
       const initRes = await api.searchTravel(token, {
         destination,
         dateRange: selectedDateRange,
@@ -153,7 +158,7 @@ const TravelView: React.FC<TravelViewProps> = ({ onBack }) => {
             <Map className="text-orange-500 mr-2" size={20} />
             跨域行程
           </h2>
-          <p className="text-xs text-gray-500 mt-1">多方出行隐私保护协调系统 (v3.2.1)</p>
+          <p className="text-xs text-gray-500 mt-1">基于隐私计算的联邦协作平台 (V1.0)</p>
         </div>
       </div>
 

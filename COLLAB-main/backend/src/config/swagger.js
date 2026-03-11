@@ -5,8 +5,8 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Secret Collab API',
-      version: '1.0.0',
+      title: '秘协作 API',
+      version: 'V1.0',
       description: 'API documentation for the Privacy-Preserving Agent Collaboration System',
       contact: {
         name: 'Developer Support',

@@ -95,7 +95,12 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onChangeView }) => {
   const handleExportReport = async () => {
     setIsExporting(true);
     try {
-      const token = localStorage.getItem('token') || 'mock-token';
+      const token = localStorage.getItem('token');
+      if (!token) {
+        showToast("请先登录");
+        setIsExporting(false);
+        return;
+      }
       const blob = await api.exportReport(token);
       const url = window.URL.createObjectURL(blob);
       setReportBlobUrl(url);
@@ -174,7 +179,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onChangeView }) => {
             <div className="p-5 max-h-[60vh] overflow-y-auto space-y-4">
               <div className="relative pl-4 border-l-2 border-primary-200">
                 <div className="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-primary-600"></div>
-                <h4 className="font-bold text-gray-900 text-sm">v3.2.1 (当前版本)</h4>
+                <h4 className="font-bold text-gray-900 text-sm">V1.0 (当前版本)</h4>
                 <p className="text-xs text-gray-500 mb-2">2026-05-15</p>
                 <ul className="text-xs text-gray-600 space-y-1 list-disc list-inside">
                   <li>优化 Gemini 3 Lite 本地推理速度，提升 15%</li>
@@ -506,7 +511,7 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onChangeView }) => {
               >
                 <div className="flex items-center">
                   <FileText size={14} className="mr-2 text-gray-400 group-hover:text-primary-500" />
-                  系统更新日志 (v3.2.1)
+                  系统更新日志 (V1.0)
                 </div>
                 <ArrowRight size={14} className="text-gray-300 group-hover:text-primary-500" />
               </button>
