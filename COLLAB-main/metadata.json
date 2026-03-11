@@ -1,0 +1,5 @@
+{
+  "name": "秘协作 (SecretCollab)",
+  "description": "基于Gemini 3与联邦学习的企业级隐私协作平台。数据不动模型动，隐私不泄露智能升。",
+  "requestFramePermissions": []
+}
